@@ -26,7 +26,9 @@ Download a **binary package** of Apache Kafka (e.g., `kafka_2.13-2.8.0.tgz`) fro
 [https://kafka.apache.org/downloads](https://kafka.apache.org/downloads) 
 and unzip it to a directory, e.g., `C:\kafka`&mdash;Windows does not like a complex path name (!).
 
+<!--
 In the configuration file `C:\kafka\config\zookeeper.properties`, comment out the line `"dataDir=/tmp/zookeeper"`. In `C:\kafka\config\server.properties`, change the line `"log.dirs=/tmp/kafka-logs"` to `"log.dirs=.kafka-logs"`.
+-->
 
 Use the following two commands in the Windows CMD (one in each window) to start Kafka:
 ```bash
@@ -37,23 +39,17 @@ C:\kafka\bin\windows\kafka-server-start.bat C:\kafka\config\server.properties
 ```
 
 ## View Kafka Topics
-After running the `bookingms`'s main class, you should see two Kafka topics:
+After running the `bookingms`'s main class, check the Kafka topics with the following command:
 
 (Linux/MacOS)
 ```shell
 ./bin/kafka-topics.sh --bootstrap-server=localhost:9092 --list
-__consumer_offsets
-cargobookings
-cargoroutings
 ```
 (Windows)
 ```shell
 .\bin\windows\kafka-topics.bat --bootstrap-server=localhost:9092 --list
-__consumer_offsets
-cargobookings
-cargoroutings
-
 ```
+You should see two topic names `cargobookings` and `cargoroutings`.
 
 ### Trouble Shooting
 If you cannot start Kafka, try to clean up data in the Kafka topics to start over. 
