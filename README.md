@@ -7,6 +7,7 @@ Chapter 4 of the book _Practical Domain-Driven Design in Enterprise Java_ with m
 This Spring Boot project uses Apache Kafka as a messaging platform. 
 To run this project, you need to set up Kafka first.
 
+_Note. This project may be updated constantly._
 
 ## A Short Guide to Set Up Apache Kafka
 ### Linux and MacOS
