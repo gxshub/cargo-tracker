@@ -30,3 +30,11 @@ build/
 ### VS Code ###
 .vscode/
 /.idea/
+/bookingms/src/main/resources/__application.Copy
+/handlingms/src/main/resources/__application.Copy
+/routingms/src/main/resources/__application.Copy
+/trackingms/src/main/resources/__application.Copy
+/bookingms/__pom.Copy
+/handlingms/__pom.Copy
+/routingms/__pom.Copy
+/trackingms/__pom.Copy
