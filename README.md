@@ -48,7 +48,7 @@ After running the `bookingms`'s main class, check the Kafka topics with the foll
 ```
 (Windows)
 ```shell
-.\bin\windows\kafka-topics.bat --bootstrap-server=localhost:9092 --list
+C:\kafka\bin\windows\kafka-topics.bat --bootstrap-server=localhost:9092 --list
 ```
 You should see two topic names `cargobookings` and `cargoroutings`.
 
