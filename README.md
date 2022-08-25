@@ -2,7 +2,7 @@
 
 This sample Spring Boot project is used to illustrate the patterns of Domain-Driven Design. 
 It is based on the source code<sup id="a1">[1](#f1)</sup> in
-Chapter 4 of the book _Practical Domain Driven Design_ with modification.
+Chapter 4 of the book _Practical Domain-Driven Design in Enterprise Java_ with modification.
 
 This Spring Boot project uses Apache Kafka as a messaging platform. 
 To run this project, you need to set up Kafka first.
