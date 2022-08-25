@@ -16,10 +16,10 @@ Download a **binary package** of Apache Kafka (e.g., `kafka_2.13-2.8.0.tgz`) fro
 and upzip it.
 In the Terminal, `cd` to the unzip folder, and start Kakfa with the following commands (each in a separate Terminal session):
 ```bash
-./bin/zookeeper-server-start.sh
+./bin/zookeeper-server-start.sh ./config/zookeeper.properties
 ```
 ```bash
-./bin/kafka-server-start.sh
+./bin/kafka-server-start.sh ./config/server.properties
 ```
 
 ### Windows
@@ -54,7 +54,7 @@ You should see two topic names `cargobookings` and `cargoroutings`.
 
 ### Trouble Shooting
 If you cannot start Kafka, try to clean up data in the Kafka topics to start over. 
-For this purpose, in Linux/MacOS, delete the folders `/tmp/zookeeper`, `/tmp/kafka-logs` and `/tmp/kafka-streams`. In Windows, delete the folders `C:\kafka\.dataDirzookeeper` and `C:\kafka\.kafka-logs`.
+For this purpose, in Linux/MacOS, delete the folders `/tmp/zookeeper`, `/tmp/kafka-logs` and `/tmp/kafka-streams` (if any). In Windows, delete the folders `C:\tmp\zookeeper`, 'C:\tmp\kafka-logs' and `C:\kafka\kafka-streams` (if any).
 
 
 ---
