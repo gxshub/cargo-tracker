@@ -17,7 +17,7 @@ import org.springframework.data.domain.AbstractAggregateRoot;
         @NamedQuery(name = "Cargo.findAll",
                 query = "Select c from Cargo c"),
         @NamedQuery(name = "Cargo.findByBookingId",
-                query = "Select c from Cargo c where c.bookingId = :bookingId"),
+                query = "Select c from Cargo c where c.bookingId = ?1"),
         @NamedQuery(name = "Cargo.findAllBookingIds",
                 query = "Select c.bookingId from Cargo c") })
 public class Cargo extends AbstractAggregateRoot<Cargo> {

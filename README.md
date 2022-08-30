@@ -39,6 +39,19 @@ C:\kafka\bin\windows\zookeeper-server-start.bat C:\kafka\config\zookeeper.proper
 C:\kafka\bin\windows\kafka-server-start.bat C:\kafka\config\server.properties
 ```
 
+## Run the Application ##
+Book and check cargoes with the following command:
+(Linux/MacOS)
+```shell
+curl -X POST -H "Content-Type:application/json" -d '{"bookingAmount":20,"originLocation":"HK","destLocation":"NY","destArrivalDeadline":"2010-08-01"}' http://localhost:8787/cargobooking
+curl -X GET -H "Content-Type:application/json" http://localhost:8787/cargobooking/findAllBookingIds
+```
+(windows)
+```shell
+curl -X POST -H "Content-Type:application/json" -d "{\"bookingAmount\":20,\"originLocation\":\"HK\",\"destLocation\":\"NY\",\"destArrivalDeadline\":\"2010-08-01\"}" http://localhost:8787/cargobooking
+curl -X GET -H "Content-Type:application/json" http://localhost:8787/cargobooking/findAllBookingIds
+```
+
 ## View Kafka Topics
 After running the `bookingms`'s main class, check the Kafka topics with the following command:
 
@@ -50,15 +63,25 @@ After running the `bookingms`'s main class, check the Kafka topics with the foll
 ```shell
 C:\kafka\bin\windows\kafka-topics.bat --bootstrap-server=localhost:9092 --list
 ```
-You should see two topic names `cargobookings` and `cargoroutings`.
+You should see two topic names `cargobookings` and `cargoroutings`. You can consume data in the `cargobookings` topic:
 
-### Trouble Shooting
+(Linux/MacOS)
+```shell
+./bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic cargobookings --from-beginning
+```
+(Windows)
+```shell
+c:\kafka\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic cargobookings --from-beginning
+```
+
+## Trouble Shooting
 If you cannot start Kafka, try to clean up data in the Kafka topics to start over. 
-For this purpose, in Linux/MacOS, delete the folders `/tmp/zookeeper`, `/tmp/kafka-logs` and `/tmp/kafka-streams` (if any). In Windows, delete the folders `C:\tmp\zookeeper`, 'C:\tmp\kafka-logs' and `C:\kafka\kafka-streams` (if any).
-
+For this purpose, in Linux/MacOS, delete the folders `/tmp/zookeeper`, `/tmp/kafka-logs` 
+and `/tmp/kafka-streams` (if any). In Windows, delete the folders `C:\tmp\zookeeper`, 
+`C:\tmp\kafka-logs` and `C:\kafka\kafka-streams` (if any).
 
 ---
-<a id="f1">1.</a> GitHub link: 
+<a id="f1">1.</a>
 [https://github.com/practicalddd/practicaldddbook/tree/master/Chapter5](https://github.com/practicalddd/practicaldddbook/tree/master/Chapter5) [↩](#a1)
 
 

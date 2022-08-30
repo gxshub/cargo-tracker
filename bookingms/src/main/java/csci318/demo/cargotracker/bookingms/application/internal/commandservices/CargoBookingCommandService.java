@@ -39,11 +39,12 @@ public class CargoBookingCommandService {
     public BookingId bookCargo(BookCargoCommand bookCargoCommand){
 
         String random = UUID.randomUUID().toString().toUpperCase();
-        System.out.println("Random is :"+random);
-        bookCargoCommand.setBookingId(random.substring(0, random.indexOf("-")));
+        String bookIdStr = random.substring(0, random.indexOf("-"));
+        System.out.println("Random is :"+bookIdStr);
+        bookCargoCommand.setBookingId(bookIdStr);
         Cargo cargo = new Cargo(bookCargoCommand);
         cargoRepository.save(cargo);
-        return new BookingId(random);
+        return new BookingId(bookIdStr);
     }
 
     /**
@@ -53,7 +54,7 @@ public class CargoBookingCommandService {
 
     public void assignRouteToCargo(RouteCargoCommand routeCargoCommand){
 
-        Cargo cargo = cargoRepository.findByBookingId(routeCargoCommand.getCargoBookingId());
+        Cargo cargo = cargoRepository.findByBookingId(new BookingId(routeCargoCommand.getCargoBookingId()));
         CargoItinerary cargoItinerary = externalCargoRoutingService.fetchRouteForSpecification(new RouteSpecification(
                 new Location(routeCargoCommand.getOriginLocation()),
                 new Location(routeCargoCommand.getDestinationLocation()),

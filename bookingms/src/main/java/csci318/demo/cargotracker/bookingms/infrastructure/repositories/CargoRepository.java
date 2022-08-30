@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface CargoRepository extends JpaRepository<Cargo, Long> {
 
-     Cargo findByBookingId(String BookingId);
+     Cargo findByBookingId(BookingId BookingId);
 
      List<BookingId> findAllBookingIds();
 
