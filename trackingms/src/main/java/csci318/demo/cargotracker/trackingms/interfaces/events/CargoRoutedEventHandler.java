@@ -1,21 +1,26 @@
 package csci318.demo.cargotracker.trackingms.interfaces.events;
 
 
-import csci318.demo.cargotracker.shareddomain.events.CargoRoutedEvent;
+import csci318.demo.cargotracker.shareddomain.events.CargoBookedEvent;
+import csci318.demo.cargotracker.trackingms.infrastructure.brokers.CargoEventSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
-import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.stereotype.Service;
 
 /**
  * Event Handler for the Cargo Routed Event that the Tracking Bounded Context is interested in
  */
 @Service
-@EnableBinding(Sink.class)
+@EnableBinding(CargoEventSource.class)
 public class CargoRoutedEventHandler {
 
-    @StreamListener(target = Sink.INPUT)
-    public void receiveEvent(CargoRoutedEvent cargoRoutedEvent) {
-        //Process the Event
+    @Autowired
+    private CargoEventSource cargoEventSource;
+
+    @StreamListener(CargoEventSource.BOOKING_INPUT)
+    public void receiveEvent(CargoBookedEvent cargoBookedEvent) {
+        System.out.println("****READING FROM KAFKA TOPIC cargobookings: "+
+                cargoBookedEvent.getCargoBookedEventData().getBookingId()+"****");
     }
 }
